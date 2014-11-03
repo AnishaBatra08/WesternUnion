@@ -1,9 +1,9 @@
-10-31-2014@13:34:17 INFO   - Browser Launched Succesfully
- 10-31-2014@13:34:36 INFO   - Browser Maximised Succesfully
- 10-31-2014@13:34:36 INFO   - Wait for navigate to test environment
- 10-31-2014@13:34:49 INFO   - Clicked on Element - By.xpath: //li[text()='Login']
- 10-31-2014@13:34:51 INFO   - Clicked on Element - By.xpath: //div[@id='btn-do-login']
- 10-31-2014@13:35:11 INFO   - Clicked on Element - By.xpath: //span[@class='header-drop-down-arrow']
- 10-31-2014@13:35:18 INFO   - By.xpath: //a[text()='Sign Out']  Element is Present
- 10-31-2014@13:35:18 INFO   - Clicked on Element - By.xpath: //a[text()='Sign Out']
+11-03-2014@13:23:11 INFO   - Browser Launched Succesfully
+ 11-03-2014@13:23:29 INFO   - Browser Maximised Succesfully
+ 11-03-2014@13:23:29 INFO   - Wait for navigate to test environment
+ 11-03-2014@13:23:33 INFO   - Clicked on Element - By.xpath: //li[text()='Register']
+ 11-03-2014@13:23:38 INFO   - Clicked on Element - By.id: wu_register_first_name
+ 11-03-2014@13:23:40 INFO   - Clicked on Element - By.id: wu_register_phone
+ 11-03-2014@13:23:42 INFO   - Clicked on Element - By.id: wu_register_terms
+ 11-03-2014@13:23:42 INFO   - Clicked on Element - By.id: wu_register_marketing_options
  

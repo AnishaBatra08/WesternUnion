@@ -1,13 +1,18 @@
 package com.wu.utility;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import driver.test1;
 
@@ -44,6 +49,17 @@ public class Utils {
 		String val = prop.getProperty(value);
 		return val;
 	}
+	//----------------------------------------------------------------------------------------------------------------------------
+    //Method Name: writeConfig
+	//Description:  A method to write test 
+	//Created Date :                      Create By: 
+	//Last Modified Date:                 Last Modified By:
+//-------------------------------------------------------------------------------------------------------------------------------	
+	public static void writeConfig(String value) throws IOException, ConfigurationException{
+		PropertiesConfiguration config = new PropertiesConfiguration("Configuration\\config.properties");
+		config.setProperty("ValidEmail", value);
+		config.save();
+}
 	
 //----------------------------------------------------------------------------------------------------------------------------
     //Method Name: Launch
@@ -82,6 +98,49 @@ public class Utils {
 			System.out.println("Unable to enter value in textbox field");	
 		}
 	}
+
+//----------------------------------------------------------------------------------------------------------------------------
+    //Method Name: SetSelectBoxValue
+	//Description: A method to enter Value in select box fields
+	//Created Date :                         Create By: 
+	//Last Modified Date:                    Last Modified By:
+//-------------------------------------------------------------------------------------------------------------------------------	
+
+	public static void SetSelectBoxValue (By by, String value){
+		try
+		{
+			new Select(driver.findElement(by)).selectByVisibleText(value);
+
+			}catch(Exception e){
+
+			System.out.println("Unable to enter value in select box field");	
+		}
+	}
+//----------------------------------------------------------------------------------------------------------------------------
+    //Method Name: SetRadioButtonValue
+	//Description: A method to enter Value in select box fields
+	//Created Date :                         Create By: 
+	//Last Modified Date:                    Last Modified By:
+//-------------------------------------------------------------------------------------------------------------------------------	
+
+	public static void SetRadioButtonValue (By by, String value){
+		try
+		{
+			
+			if(value == "Male") {
+				WebElement genderMale = driver.findElement(by);
+				genderMale.click();
+				}
+			else{
+				WebElement genderFemale = driver.findElement(by);
+				genderFemale.click();
+			}
+		}catch(Exception e){
+
+			System.out.println("Unable to enter value in select box field");	
+		}
+	}
+
 	
 //----------------------------------------------------------------------------------------------------------------------------
     //Method Name: Click
