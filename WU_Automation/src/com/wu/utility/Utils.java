@@ -55,10 +55,16 @@ public class Utils {
 	//Created Date :                      Create By: 
 	//Last Modified Date:                 Last Modified By:
 //-------------------------------------------------------------------------------------------------------------------------------	
-	public static void writeConfig(String value) throws IOException, ConfigurationException{
-		PropertiesConfiguration config = new PropertiesConfiguration("Configuration\\config.properties");
-		config.setProperty("ValidEmail", value);
-		config.save();
+	public static void writeConfig(String key, String value) throws IOException, ConfigurationException{
+		try
+		{
+			PropertiesConfiguration config = new PropertiesConfiguration("Configuration\\config.properties");
+			config.setProperty(key, value);
+			config.save();
+		}catch(Exception e){
+
+			System.out.println("Unable tp update config file");	
+		}
 }
 	
 //----------------------------------------------------------------------------------------------------------------------------
@@ -77,6 +83,32 @@ public class Utils {
 			log.info("Browser Maximised Succesfully");
 			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 			log.info("Wait for navigate to test environment");
+		}
+	}
+	
+//----------------------------------------------------------------------------------------------------------------------------
+    //Method Name: getOTP
+	//Description: A method to get OTP
+	//Created Date :                       Create By:
+	//Last Modified Date:                  Last Modified By:
+//-------------------------------------------------------------------------------------------------------------------------------	
+	public static void getOTP(String browserName, String mobiliserObject, String validMobiliser, String emailObject, String validEmail) throws IOException{
+		if(browserName.equalsIgnoreCase("Firefox")){
+			driver = new FirefoxDriver();
+			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+			log.info("Browser Launched Succesfully");
+			log.info("Wait for navigate to test environment");
+			driver.get(Utils.readConfig("OTP"));
+			SetSelectBoxValue(By.id(readObjRep(mobiliserObject)), Utils.readConfig(validMobiliser));
+			SetValue(By.id(Utils.readObjRep(emailObject)), Utils.readConfig(validEmail));
+			Click(By.className(Utils.readObjRep("OTP_GetOTP")));
+			try
+			{
+				String OTP = driver.findElement(By.xpath(readObjRep("OTP_Number"))).getText();
+				writeConfig("ValidOTP", OTP);
+			}catch(Exception e){
+				System.out.println("Unable to get text");
+			}
 		}
 	}
 	
@@ -161,6 +193,76 @@ public class Utils {
 	}
 	
 //----------------------------------------------------------------------------------------------------------------------------
+    //Method Name: getTitle
+	//Description: A Method to get title of the page
+	//Created Date :                         Create By:
+	//Last Modified Date:                    Last Modified By:
+//-------------------------------------------------------------------------------------------------------------------------------	
+
+	public static String getPageTitle(){
+		String pageTitle = "";
+		try
+		{
+			pageTitle = driver.getTitle();
+		}catch(Exception e){
+			System.out.println("Unable to get title");
+		}
+		return pageTitle;
+	}
+//----------------------------------------------------------------------------------------------------------------------------
+    //Method Name: getCurrWinhandle
+	//Description: A Method to get title of the page
+	//Created Date :                         Create By:
+	//Last Modified Date:                    Last Modified By:
+//-------------------------------------------------------------------------------------------------------------------------------	
+
+	public static String getCurrWinhandle(){
+		String currWindowHandle = "";
+		try
+		{
+			currWindowHandle = driver.getWindowHandle();
+		}catch(Exception e){
+			System.out.println("Unable to get window handle");
+		}
+		return currWindowHandle;
+	}
+//----------------------------------------------------------------------------------------------------------------------------
+    //Method Name: windowSwitch
+	//Description: A Method to  switch between windows
+	//Created Date :                         Create By:
+	//Last Modified Date:                    Last Modified By:
+//-------------------------------------------------------------------------------------------------------------------------------	
+
+	public static void windowSwitch(String winHandler){
+		try
+		{
+			System.out.println(winHandler);
+			System.out.println(driver.getWindowHandle());
+			driver.switchTo().window(winHandler);
+		}catch(Exception e){
+			System.out.println("Unable to switch between windows");
+		}
+	}
+
+//----------------------------------------------------------------------------------------------------------------------------
+    //Method Name: getBodyText
+	//Description: A Method to get text
+	//Created Date :                         Create By:
+	//Last Modified Date:                    Last Modified By:
+//-------------------------------------------------------------------------------------------------------------------------------	
+
+	public static String getBodyText(By by){
+		String  bodyText= "";
+		try
+		{
+			bodyText = driver.findElement(by).getText();
+		}catch(Exception e){
+			System.out.println("Unable to get text");
+		}
+		return bodyText;
+	}
+
+//----------------------------------------------------------------------------------------------------------------------------
     //Method Name: VerifyText
 	//Description: A method to verify whether a string text is present or not on page
 	//Created Date :                          Create By:
@@ -244,9 +346,6 @@ public class Utils {
 		}
 		
 	}
-	
-	
-	
 	//----------------------------------------------------------------------------------------------------------------------------
     //Method Name: Wait
 	//Description: A method to wait.
@@ -265,7 +364,6 @@ public class Utils {
 		{
 			
 		}
-	}
-	
+	}	
 
 }

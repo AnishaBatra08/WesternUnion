@@ -22,6 +22,7 @@ public class test1 {
 
 	public static void main(String[] args) throws IOException, InterruptedException, ConfigurationException {
 		//LoginScript.loginWithValidCredentials();
-		Registration.registerWithValidCredentials();	
+		Registration.registerWithValidCredentials();
+		//Utils.getOTP("Firefox", "OTP_SelectMobiliser", "ValidMobiliser", "OTP_Email", "ValidEmail");
 	}
 }

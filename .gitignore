@@ -15,6 +15,7 @@ local.properties
 .classpath
 .settings/
 .loadpath
+WU_Automation\bin
 
 # External tool builders
 .externalToolBuilders/
