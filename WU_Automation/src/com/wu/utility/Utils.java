@@ -93,6 +93,9 @@ public class Utils {
 	//Last Modified Date:                  Last Modified By:
 //-------------------------------------------------------------------------------------------------------------------------------	
 	public static void getOTP(String browserName, String mobiliserObject, String validMobiliser, String emailObject, String validEmail) throws IOException{
+		
+		WebDriver originalDriver = Utils.driver; 
+		
 		if(browserName.equalsIgnoreCase("Firefox")){
 			driver = new FirefoxDriver();
 			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -106,10 +109,13 @@ public class Utils {
 			{
 				String OTP = driver.findElement(By.xpath(readObjRep("OTP_Number"))).getText();
 				writeConfig("ValidOTP", OTP);
+				driver.quit();
 			}catch(Exception e){
 				System.out.println("Unable to get text");
 			}
 		}
+		
+		Utils.driver = originalDriver;
 	}
 	
 //----------------------------------------------------------------------------------------------------------------------------
