@@ -41,8 +41,7 @@ public class Registration {
 	
 	public static void registerWithValidCredentials() throws IOException, ConfigurationException, InterruptedException{
 		// Click on Register Page from Home Page
-		Utils.Launch(Utils.readConfig("Browser"));
-		Utils.Click(By.xpath("//li[text()='Register']"));
+		Utils.clickRegiter();
 		
 		// Generate random email
 		generateRandomNumber("dummy_");
@@ -97,5 +96,18 @@ public class Registration {
 		Utils.Click(By.id(Utils.readObjRep("Register_OTP")));
 		Utils.SetValue(By.id(Utils.readObjRep("Register_OTP")), Utils.readConfig("ValidOTP"));
 		Utils.Click(By.id(Utils.readObjRep("Register_Complete_Verification")));
+	}
+	
+	public static void registerWithExistingUser() throws IOException {
+		Utils.clickRegiter();
+		Utils.Click(By.xpath(Utils.readObjRep("Register_Email")));
+		Utils.SetValue( By.xpath(Utils.readObjRep("Register_Email")), Utils.readConfig("ValidEmail"));
+		Utils.Click( By.id(Utils.readObjRep("Register_FirstName")));
+		System.out.println(Utils.getBodyText(By.id(Utils.readObjRep("Register_Email_Error"))));
+//		if(Utils.getBodyText(By.id(Utils.readObjRep("Register_Email_Error"))).equalsIgnoreCase("User/email already registered.")){
+//			System.out.println("Pass: Exiting User cant register!!");
+//		}else{
+//			System.out.println(Utils.getBodyText(By.id(Utils.readObjRep("Register_Email_Error"))));
+//		}
 	}
 }

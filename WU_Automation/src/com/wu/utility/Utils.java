@@ -85,6 +85,22 @@ public class Utils {
 			log.info("Wait for navigate to test environment");
 		}
 	}
+
+//----------------------------------------------------------------------------------------------------------------------------
+    //Method Name: Launch
+	//Description: A method to open browser and navigate to given environment.
+	//Created Date :                       Create By:
+	//Last Modified Date:                  Last Modified By:
+//-------------------------------------------------------------------------------------------------------------------------------	
+	
+	public static void clickRegiter() throws IOException{
+		try{
+			Utils.Launch(Utils.readConfig("Browser"));
+			Utils.Click(By.xpath("//li[text()='Register']"));
+		}catch(Exception e){
+			System.out.println("Unable to click on Register");
+		}
+	}
 	
 //----------------------------------------------------------------------------------------------------------------------------
     //Method Name: getOTP
