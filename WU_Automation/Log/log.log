@@ -1,15 +1,7 @@
-11-05-2014@10:36:39 INFO   - Browser Launched Succesfully
- 11-05-2014@10:37:04 INFO   - Browser Maximised Succesfully
- 11-05-2014@10:37:04 INFO   - Wait for navigate to test environment
- 11-05-2014@10:37:14 INFO   - Clicked on Element - By.xpath: //li[text()='Register']
- 11-05-2014@10:37:18 INFO   - Clicked on Element - By.id: wu_register_first_name
- 11-05-2014@10:37:21 INFO   - Clicked on Element - By.id: wu_register_phone
- 11-05-2014@10:37:23 INFO   - Clicked on Element - By.id: wu_register_terms
- 11-05-2014@10:37:23 INFO   - Clicked on Element - By.id: wu_register_marketing_options
- 11-05-2014@10:37:24 INFO   - Clicked on Element - By.id: wu_register_continue
- 11-05-2014@10:37:45 INFO   - Browser Launched Succesfully
- 11-05-2014@10:37:45 INFO   - Wait for navigate to test environment
- 11-05-2014@10:37:50 INFO   - Clicked on Element - By.className: button
- 11-05-2014@10:37:50 INFO   - Clicked on Element - By.id: wu-ev-pin
- 11-05-2014@10:37:50 INFO   - Clicked on Element - By.id: complete-verification
+11-05-2014@12:46:02 INFO   - Browser Launched Succesfully
+ 11-05-2014@12:46:28 INFO   - Browser Maximised Succesfully
+ 11-05-2014@12:46:28 INFO   - Wait for navigate to test environment
+ 11-05-2014@12:46:40 INFO   - Clicked on Element - By.xpath: //li[text()='Register']
+ 11-05-2014@12:46:41 INFO   - Clicked on Element - By.xpath: //input[@id='wu_register_email']
+ 11-05-2014@12:46:41 INFO   - Clicked on Element - By.id: wu_register_first_name
  
